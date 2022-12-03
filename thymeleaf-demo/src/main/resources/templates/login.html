@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login / Signup Form</title>
+        <link rel="stylesheet" th:href="@{/css/loginCSS.css}">
+        <script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+        </script>
+    </head>
+    <body>
+        <script th:src="@{/js/login.js}"></script>
+
+        <div class="container">
+            <!-- login form -->
+            <form  class="form" id="login">
+                <h1 class="form__title">login</h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <input id="uname" type="text" class="form__input signupUserName" autofocus placeholder="Username/Email">
+                    <div id="uname_error" class="form__input-error-message"></div>
+                </div> 
+                <!-- Actual passwords -->
+                <div class="form__input-group">
+                    <input id="pass" type="password" class="form__input" autofocus placeholder="Password">
+                    <div id="pass_error" class="form__input-error-message"></div>
+                </div>
+                <button id="loginbtn" class="form__button" type="submit" >Log In</button>
+
+                <!-- <script>
+                    let password = 'helloWorld'; 
+
+                    funtion logIn(){
+                        if (password === 'helloWorld'){
+                            window.location = "link to account page";  
+                        }
+                    }
+                </script> -->
+
+                <p class="form__text">
+                    <a href="#" class="form__link">Forgot your password?</a>
+                </p>
+                <p class="form__text">
+                    <a href="./" class="form__link" id="linkCreateAccount">Don't have an account? Create an account</a>
+                </p>
+            </form>
+            <!-- create account form -->
+            <form  class="form form--hidden" id="CreateAccount">
+                <h1 class="form__title">Create Account</h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <input id="signupUserName" type="text" class="form__input" autofocus placeholder="Username">
+                    <div class="form__input-error-message"></div>
+                </div> 
+                <div class="form__input-group">
+                    <input id="sign_email" type="text" class="form__input" autofocus placeholder="Email Address">
+                    <div class="form__input-error-message"></div>
+                </div> 
+                <div class="form__input-group">
+                    <input id="sign_pass" type="password" class="form__input" autofocus placeholder="Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input id="sign_checkpass" type="password" class="form__input" autofocus placeholder="Confirm Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <button id="signupbtn" class="form__button" type="submit">Continue</button>
+                
+                <p class="form__text">
+                    <a href="./" class="form__link" id="linkLogin">Already have an account? Sign in</a>
+                </p>
+            </form>
+        </div>
+     
+        <SCRIPT LANGUAGE="JavaScript">
+            $(document).ready(function () {
+                        
+                $('#loginbtn').click(function(){
+                        var uname = document.getElementById('uname').value;
+                        var pass = document.getElementById('pass').value;
+                        $.ajax({
+                            type: "get",
+                            url: "http://localhost:9292/account/login",
+                            // The key needs to match your method's input parameter (case-sensitive).
+                            //data: data,
+                            data: { "id": uname, "pass": pass},
+                            contentType: "application/json; charset=utf-8",
+                            success: function(data){
+                                alert(data.message);
+                                window.location.href = "/path/to/thankyoupage";
+                            },
+                            error: function(errMsg) {
+                                //alert(errMsg);
+                                //$('#uname_error').append(JSON.stringify(errMsg.message));
+                            }
+                        });
+                });
+             });
+
+
+             $(document).ready(function () {
+                        
+                        $('#signupbtn').click(function(){
+                
+                           var uname = document.getElementById('signupUserName').value;
+                           var email = document.getElementById('sign_email').value;
+                           var pass = document.getElementById('sign_pass').value;
+                           var check_pass = document.getElementById('sign_checkpass').value;
+                           $.ajax({
+                               type: "get",
+                               url: "http://localhost:9292/account/signup",
+                               // The key needs to match your method's input parameter (case-sensitive).
+                               //data: data,
+                               data: { "email": email,"name": uname, "pass": pass,"check_pass": check_pass},
+                               contentType: "application/json; charset=utf-8",
+                               success: function(data){
+                                    alert(data.message);
+                               },
+                               error: function(errMsg) {
+                                   //alert(errMsg);
+                                   //$('#uname_error').append(JSON.stringify(errMsg.message));
+                               }
+                           });
+                        });
+            });
+             
+            
+                     
+            </SCRIPT>
+    </body>

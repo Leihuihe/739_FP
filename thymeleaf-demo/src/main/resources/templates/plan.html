@@ -1,0 +1,95 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plan</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/plan-Style.css">
+        <link rel="stylesheet" href="css/fontawesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    </head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light text-capitalize">
+        <div class="container">
+            <span "><a class="navbar-brand" href="#"><img src="imgs/logo.jpg" alt="logo" width="212" height="63" /></a></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#show-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav tabs -->
+            <div class="collapse navbar-collapse" id="show-menu">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" active>
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">about</a>
+                    </li>
+
+                    <!-- Make it a dropdown button -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="plan.html">Plan</a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recommendations.html">Recommendations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">contact us</a>
+                    </li>
+                    <li class="nav-item .search-container">
+                        <a class="nav-link search" href="#"><i class="fas fa-search"></i></a>
+                        <form>
+                            <input type="search">
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="account.html"><i class="far fa-user"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my history.html"><i class="far fa-heart"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <header id="Plan">
+        <div class="overlay">
+            <div class="container">
+                <h1>Please choose a location</h1>
+            </div>
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <script src=“https://maps.googleapis.com/maps/api/js?key=AIzaSyCVC4LSoETIOC5HF-4sRB0OIXdJQpQlDbo&callback=initMap&libraries=&v=weekly”async> </script>
+
+    <script>
+  
+        // Initialize and add the map
+        function initMap() {
+  
+            // The location of Geeksforgeeks office
+            const gfg_office = {
+                lat: 28.50231,
+                lng: 77.40548
+            };
+  
+            // Create the map, centered at gfg_office
+            const map = new google.maps.Map(
+                document.getElementById("map"), {
+  
+                // Set the zoom of the map
+                zoom: 17.56,
+                center: gfg_office,
+            });
+        }
+    </script>
+
+</body>
+</html>

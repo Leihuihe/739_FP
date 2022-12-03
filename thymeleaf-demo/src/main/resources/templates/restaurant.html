@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class = "container"> 
+		<table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+			<thead> 
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "rest:${rests}">
+					<td align="center" class="imageUpsizeCell" style="width: 350px; height: 280px;" valign="center"><img th:src="${rest.r_Imgurl}" style="display: block; padding: 0px; text-align: center; height: 240px; width: 320px;"/> </td>
+					<td th:text = "${rest.r_Name}" align="center" class="fontSize18" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 19px;color: #555555; padding: 20px 20px 20px 20px" valign="center"> </td>
+					<td th:text = "${rest.r_Location}" align="center" class="fontSize18" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 19px;color: #555555; padding: 20px 20px 20px 20px" valign="center"> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>

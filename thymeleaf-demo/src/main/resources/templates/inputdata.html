@@ -1,0 +1,151 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<HTML>
+<HEAD>
+<TITLE>Test Input</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+function testResults (form) {
+    event.preventDefault();
+    var TestVar = form.itemId.value;
+    alert ("You typed: " + TestVar);
+    formData = new FormData(form)
+    formString = JSON.stringify(Object.fromEntries(formData));
+    console.log(formString);
+}
+
+function postData(form)
+{
+// https://attacomsian.com/blog/xhr-json-post-request
+const xhr = new XMLHttpRequest()
+
+// listen for `load` event
+xhr.onload = () => {
+  // print JSON response
+  if (xhr.status >= 200 && xhr.status < 300) {
+    // parse JSON
+    const response = JSON.parse(xhr.responseText)
+    console.log("json parsed");
+    console.log("Done", response)
+  }
+}
+
+
+// open request
+xhr.open('POST', '/account/save')
+
+// set `Content-Type` header
+xhr.setRequestHeader('Content-Type', 'application/json')
+//formData = new FormData(form)
+// send rquest with JSON payload
+
+formData = new FormData(form)
+formString = JSON.stringify(Object.fromEntries(formData));
+console.log(formString);
+xhr.send(formString);
+xhr.onreadystatechange = function(){
+	if(xhr.readyState === 4) {
+		if (xhr.status >= 200 && xhr.status < 300) {
+		    console.log("Done");
+  		}
+  		else
+  		{
+  			console.log("fail");
+  		}
+	}
+}
+}
+$(document).ready(function () {
+			
+		 $('#ajaxBtn').click(function(){
+			
+			$.getJSON('http://localhost:9292/account', null , function (data, Status, jqXHR) {
+				//document.getElementById("ajaxp").innerHTML(data);
+				$('#ajaxp').append(JSON.stringify(data));
+				$.each(data, function(uID) {
+		            alert("uID: "+data[uID].uID+" u_Name: "+data[uID].u_Name);
+		            $('#ajaxp').append(data[uID].u_Name);
+		        });
+				//$('#ajaxp').innerHTML(data.u_Name);
+				//alert(Status);
+			});
+		});
+ });
+ 
+$(document).ready(function () {
+			
+		 $('#submitid').click(function(){
+		 	$.getJSON({
+		 		url: 'http://localhost:9292/account/data',
+		 		//data: $("#idform").serialize(),
+		 		data: {id: $("#idval").val()},
+		 		success: function(data, Status, jqXHR){
+		 			data.message == "Success"? alert("hello "+data.u_Name): alert(data.message);
+		 			$('#getid').append(JSON.stringify(data));
+			 		$('#ajaxp').append(JSON.stringify(data));
+			 		//alert("hello "+data.u_Name);
+		 			
+
+		 			
+		 			
+		 		}
+		    });
+		 	
+        });
+});
+
+		 
+</SCRIPT>
+</HEAD>
+<BODY>
+    <p th:text="'Hello, ' + ${name} + '!'" />
+
+<FORM NAME="myform" ACTION="/account/save" METHOD="POST">Enter the data! <BR>
+
+<p>User Id: </p>
+<INPUT TYPE="text" NAME="uID" VALUE=""><P>
+
+<p>User Name: </p>
+<INPUT TYPE="text" NAME="u_Name" VALUE=""><P>
+
+<p>User Password: </p>
+<INPUT TYPE="text" NAME="password" VALUE=""><P>
+
+<p>User Phone: </p>
+<INPUT TYPE="text" NAME="u_Phone" VALUE=""><P>
+
+<p>User Address: </p>
+<INPUT TYPE="text" NAME="u_Address" VALUE=""><P>
+
+<p>User Zipcode: </p>
+<INPUT TYPE="text" NAME="u_Zipcode" VALUE=""><P>
+
+<p>User balance: </p>
+<INPUT TYPE="text" NAME="u_balance" VALUE=""><P>
+
+<INPUT TYPE="button" NAME="button" Value="Click" onClick="postData(this.form)">
+</FORM>
+
+<form id="idform"  >
+</form>
+
+<p>Item Id: </p>
+<INPUT id="idval" TYPE="text" NAME="id" VALUE=""><P>
+ <input id="submitid" type="submit" value="Submit">
+ 
+
+
+<p id="getid"> </p>
+
+<h1> jQuery get() method demo 
+	</h1>
+	<input type="button" id="ajaxBtn" value="Send GET request" />
+	<p id="ajaxp"> </p>
+
+</BODY>
+</HTML>

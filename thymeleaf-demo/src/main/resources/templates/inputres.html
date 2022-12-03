@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
+
+
+
+<title>Input Restaurants</title>
+</head>
+<body>
+<p>Restaurant Name: </p>
+<INPUT id="rname" TYPE="text" NAME="u_Name" VALUE=""><P>
+
+<p>Restaurant Location: </p>
+<INPUT id="rlo" TYPE="text" NAME="password" VALUE=""><P>
+
+<p>Restaurant Image: </p>
+<INPUT id="rimg" TYPE="text" NAME="u_Phone" VALUE=""><P>
+    <input id="submitid" type="submit" value="Submit">
+    
+    
+<SCRIPT LANGUAGE="JavaScript">
+
+//const data = JSON.parse(stringdata);
+//var rimg = document.getElementById('rimg').value;
+//var rname = document.getElementById('rname').value;
+//const rlo = $("#rlo").val();
+//var rlo = document.getElementById('rlo').value;
+
+//const stringdata = '{"r_Imgurl":'+ rimg+',"r_Name": '+ rname+',"r_Location": '+rlo+'}';
+//console.log(stringdata);
+$(document).ready(function () {
+			
+		 $('#submitid').click(function(){
+			var rimg = document.getElementById('rimg').value;
+			var rname = document.getElementById('rname').value;
+			//const rlo = $("#rlo").val();
+			var rlo = $("#rlo").val();
+			
+			const stringdata = '{"r_Imgurl":'+ rimg+',"r_Name": '+ rname+',"r_Location": '+rlo+'}';
+			console.log(stringdata);
+			$.ajax({
+                type: "POST",
+                url: "http://localhost:9292/res/save",
+                // The key needs to match your method's input parameter (case-sensitive).
+                //data: data,
+                data: JSON.stringify({ "r_Imgurl": rimg, "r_Name": rname,"r_Location": rlo}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){alert("Success!");},
+                error: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
+		});
+ });
+ 
+
+		 
+</SCRIPT>
+</body>
+</html>

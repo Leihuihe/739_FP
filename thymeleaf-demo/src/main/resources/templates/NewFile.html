@@ -1,0 +1,73 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<HTML>
+<HEAD>
+<TITLE>Test Input</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<SCRIPT LANGUAGE="JavaScript">
+function testResults (form) {
+    event.preventDefault();
+    var TestVar = form.itemId.value;
+    alert ("You typed: " + TestVar);
+    formData = new FormData(form)
+    formString = JSON.stringify(Object.fromEntries(formData));
+    console.log(formString);
+}
+
+function postData(form)
+{
+// https://attacomsian.com/blog/xhr-json-post-request
+const xhr = new XMLHttpRequest()
+
+// listen for `load` event
+xhr.onload = () => {
+  // print JSON response
+  if (xhr.status >= 200 && xhr.status < 300) {
+    // parse JSON
+    const response = JSON.parse(xhr.responseText)
+    console.log("Done", response)
+  }
+}
+
+
+// open request
+xhr.open('POST', '/rest/item/create')
+
+// set `Content-Type` header
+xhr.setRequestHeader('Content-Type', 'application/json')
+formData = new FormData(form)
+// send rquest with JSON payload
+
+formData = new FormData(form)
+formString = JSON.stringify(Object.fromEntries(formData));
+console.log(formString);
+xhr.send(formString)
+
+}
+
+</SCRIPT>
+</HEAD>
+<BODY>
+    <p th:text="'Hello, ' + ${name} + '!'" />
+
+<FORM NAME="myform" ACTION="/rest/item/create" METHOD="POST">Enter the data! <BR>
+
+<p>Item Id: </p>
+<INPUT TYPE="text" NAME="itemId" VALUE=""><P>
+
+<p>Item Name: </p>
+<INPUT TYPE="text" NAME="itemName" VALUE=""><P>
+
+<p>Item Price: </p>
+<INPUT TYPE="text" NAME="itemPrice" VALUE=""><P>
+
+<p>Item QTY: </p>
+<INPUT TYPE="text" NAME="itemQTY" VALUE=""><P>
+
+<INPUT TYPE="button" NAME="button" Value="Click" onClick="postData(this.form)">
+</FORM>
+</BODY>
+</HTML>
