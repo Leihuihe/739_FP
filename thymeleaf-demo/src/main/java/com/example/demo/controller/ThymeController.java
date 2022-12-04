@@ -62,5 +62,17 @@ public class ThymeController {
 		return "login";
 	}
 	
+	@GetMapping("/index")
+	public String gotoIndex(Model model)
+	{
+		return "index";
+	}
+	
+	@GetMapping("/acc")
+	public String gotoAcc(Model model)
+	{
+		return "account";
+	}
+	
 	
 }
