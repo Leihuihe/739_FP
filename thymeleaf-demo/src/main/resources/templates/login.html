@@ -46,7 +46,7 @@
                 </p>
             </form>
             <!-- create account form -->
-            <form  class="form form--hidden" id="CreateAccount">
+            <div  class="form form--hidden" id="CreateAccount">
                 <h1 class="form__title">Create Account</h1>
                 <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
@@ -70,7 +70,7 @@
                 <p class="form__text">
                     <a href="./" class="form__link" id="linkLogin">Already have an account? Sign in</a>
                 </p>
-            </form>
+            </div>
         </div>
      
         <SCRIPT LANGUAGE="JavaScript">
@@ -87,8 +87,8 @@
                             data: { "id": uname, "pass": pass},
                             contentType: "application/json; charset=utf-8",
                             success: function(data){
-                                alert(data.message);
-                                window.location.href = "/path/to/thankyoupage";
+                                data.message == "Success"? window.location.href = "/index": alert(data.message);
+                                
                             },
                             error: function(errMsg) {
                                 //alert(errMsg);
@@ -114,8 +114,10 @@
                                //data: data,
                                data: { "email": email,"name": uname, "pass": pass,"check_pass": check_pass},
                                contentType: "application/json; charset=utf-8",
-                               success: function(data){
-                                    alert(data.message);
+                               success: function(data){ 
+                                    data.message == "Success"? window.location.href = "/index": alert(data.message);
+                                    loginForm.classList.add("form--hidden");
+        							createAccountForm.classList.remove("form--hidden");
                                },
                                error: function(errMsg) {
                                    //alert(errMsg);

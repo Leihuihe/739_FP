@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recommendations</title>
+        <title>Restaurant</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/recommendations.css">
+        <link rel="stylesheet" href="css/restaurant.css">
         <link rel="stylesheet" href="css/fontawesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     </head>
@@ -27,6 +27,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html#about">about</a>
                             </li>
+    
+                            <!-- Make it a dropdown button -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="plan.html">Plan</a>
+    
+                            </li>
+    
                             <li class="nav-item">
                                 <a class="nav-link" href="recommendations.html">Recommendations</a>
                             </li>
@@ -39,28 +46,38 @@
             </nav>
         </header>
 
-        <div class="a-container">
+        <!-- Display one resturant details -->
+    
+        <div class = "a-container">
             <div class="a-section ya-personalized">
-                <h1>Best Restaurants in Town</h1>
-                <br>
-                <ul>
-                    <li class="item-list">
-                        <img src="imgs/Guva's Cuban Cafe.jpeg" alt="Guava's Cuban Cafe">
-                        <a href="https://guavascubancafe.com/"><h6>Guva's Cuban Cafe</h6></a>
-                        <p>Phone: (612) 824-0951</p>
-                        <p>Open 8:00 AM - 10:00 PM</p>
-                        <p>5607 Chicago Ave, Minneapolis, MN 55417 Nokomis</p>     
-                    </li>
-                    <br>
-                    <li class="item-list">
-                        <img src="imgs/Bruegger's bagels.jpeg" alt="Bruegger's bagels" style="width: 500px;height: 150px;">
-                        <a href="https://www.brueggers.com/"><h6>Bruegger's bagels</h6></a>
-                        <p>Phone: (612) 339-3311</p>
-                        <p>Open 6:00 AM - 2:00 PM</p>
-                        <p>651 Nicollet Mall Ste 139 Minneapolis, MN 55402</p>     
-                    </li>
-                </ul>
+                <div class="a-row a-spacing-base">
+                    <h1>You've visited these restaurants...</h1>
+                </div>
+
+                <div id="Guava's">
+                    <h5>Guava's Cuban Cafe</h5>
+
+                    <img class="restImg" src="imgs/Guva's Cuban Cafe.jpeg" alt="Guava's Cuban Cafe">
+
+                    <h6>Description:</h6>
+                    <p>We are a South Minneapolis neighborhood restaurant that draws inspiration from Cuban American cuisine. Come check us out we know you'll love it! </p>
+
+                </div>
+
+                <!-- The div element for the map -->
+
+                <div id="visited">
+                    <h5>Location</h5>
+                    <div id="map"></div>
+                    <a href="https://www.google.com/maps/dir//guava+cuban+cafe/@44.9424269,-93.2825187,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x87f62790bee82ac3:0xcaa1f1955c1d6853!2m2!1d-93.2623526!2d44.9012719">
+                        <button class="directions">Directions</button>
+                    </a>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVC4LSoETIOC5HF-4sRB0OIXdJQpQlDbo&callback=initMap&v=weekly" defer
+                    ></script>
+                </div> 
+    
             </div>
+
+
         </div>
-        
     </body>

@@ -124,9 +124,9 @@ public class AccountController {
 		account.setuID(email);
 		account.setU_Name(name);
 		account.setPassword(pass);
-		account.setMessage("Created a new account: "+account.getuID());
+		account.setMessage("Success");
 		dao.save(account);
-		System.out.print("Create Success");
+		System.out.print("Create Success "+account.getuID());
 		return account;
 	}
 	
