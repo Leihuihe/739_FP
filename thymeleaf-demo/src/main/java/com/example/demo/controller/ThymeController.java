@@ -73,6 +73,17 @@ public class ThymeController {
 	{
 		return "account";
 	}
+	@GetMapping("/recommendations")
+	public String gotoRecom(Model model)
+	{
+		return "recommendations";
+	}
+	
+	@GetMapping("/carinfo")
+	public String gotoCar(Model model)
+	{
+		return "car";
+	}
 	
 	
 }

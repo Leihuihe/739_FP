@@ -1,13 +1,13 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/accountCSS.css}">
-    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
-    <link th:href="@{/css/roboto.css}" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/accountCSS.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 
 </head>
 <body>
@@ -24,26 +24,16 @@
                 <div class="collapse navbar-collapse" id="show-menu">
                     <ul class="nav nav-tabs">
                         <li class="nav-item" active>
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#about">about</a>
-                        </li>
-
-                        <!-- Make it a dropdown button -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="plan.html">Plan</a>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="recommendations.html">Recommendations</a>
+                            <a class="nav-link" href="/index#about">about</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html"><i class="far fa-user"></i></a>
+                            <a class="nav-link" href="/recommendations">Recommendations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="my history.html"><i class="far fa-heart"></i></a>
+                            <a class="nav-link" href="/acc"><i class="far fa-user"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -65,6 +55,7 @@
             <div class="a-row a-spacing-base">
                 <h1>Your Account</h1>
             </div>
+            <!-- row 1 -->
             <div class="ya-card-row">
                 <div class="ya-card-cell">
                     <a href="" class="ya-card__whole-card-link">
@@ -75,9 +66,35 @@
                                         <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
                                     </div>
                                     <div calss="a-column a-span9 a-span-last">
-                                        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Places Visited </h2>
+                                        <a href="/map">
+                                            <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Places Visited </h2>
+                                        </a>
                                         <div>
                                             <span class="a-color-secondary"> Check the places visted before </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                
+                <div class="ya-card-cell">
+                    <a href="" class="ya-card__whole-card-link">
+                        <div data-card-identifier="YourOrders" class="a-box ya-card--rich">
+                            <div class="a-box-inner">
+                                <div class="a-row">
+                                    <div class="a-column a-span3">
+                                        <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
+                                    </div>
+                                    <div calss="a-column a-span9 a-span-last">
+                                        <a href="/rest">
+                                            <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Restaurants </h2>
+                                        </a>
+                                        <div>
+                                            <span class="a-color-secondary"> Take a look at the restaurants you've been to</span>
                                         </div>
                                     </div>
                                     
@@ -96,7 +113,35 @@
                                         <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
                                     </div>
                                     <div calss="a-column a-span9 a-span-last">
+                                    	<a href="/carinfo">
+                                        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Cars </h2>
+                                        </a>
+                                        <div>
+                                            <span class="a-color-secondary"> Manage the cars you are renting </span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="ya-card-row">
+                <div class="ya-card-cell">
+                    <a href="" class="ya-card__whole-card-link">
+                        <div data-card-identifier="YourOrders" class="a-box ya-card--rich">
+                            <div class="a-box-inner">
+                                <div class="a-row">
+                                    <div class="a-column a-span3">
+                                        <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
+                                    </div>
+                                    <div calss="a-column a-span9 a-span-last">
+                                    	<a href="/all">
                                         <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Login & Security </h2>
+                                        </a>
                                         <div>
                                             <span class="a-color-secondary"> Edit login, name, and phone number</span>
                                         </div>
@@ -117,9 +162,34 @@
                                         <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
                                     </div>
                                     <div calss="a-column a-span9 a-span-last">
-                                        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Your Profiles </h2>
+                                    	<a href="/rest/input">
+                                        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Add new Rrestaurant </h2>
+                                        </a>
                                         <div>
-                                            <span class="a-color-secondary"> Manage personal information</span>
+                                            <span class="a-color-secondary"> Add new restaurant information</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ya-card-cell">
+                    <a href="" class="ya-card__whole-card-link">
+                        <div data-card-identifier="YourOrders" class="a-box ya-card--rich">
+                            <div class="a-box-inner">
+                                <div class="a-row">
+                                    <div class="a-column a-span3">
+                                        <img src="imgs/imgaccountyour-info (Logo) (100 × 100 px) (1).png" alt="Your Info">
+                                    </div>
+                                    <div calss="a-column a-span9 a-span-last">
+                                    	<a href="/mapindex">
+                                        <h2 class="a-spacing-none ya-card__heading--rich a-text-normal"> Map </h2>
+                                        </a>
+                                        <div>
+                                            <span class="a-color-secondary"> Check the map </span>
                                         </div>
                                     </div>
                                     
